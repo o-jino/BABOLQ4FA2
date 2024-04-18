@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Generator Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <legend>[Enter a number between 2 and 10]</legend><br>
+    <label for="number1"> Enter 1st number: </label> <br>
+    <input type="text" id="number1" name="number1"><br>
+    <label for="number2">Enter 2nd number: </label><br>
+    <input type="text" name="number2" id="number2"> <br> <br>
+    <button onclick="timestable();">Click here when ready</button> <br><br>
+    
+    <div id="timestableborder"></div>
+
+    <script>
+        
+        
+        function timestable()//for the output timestable depending on inputted values by the user
+        {
+            var a = document.getElementById("number1").value;
+            var b = document.getElementById("number2").value;
+            var table = "<table border='1'>";
+
+            if(!error(a,b))
+            {
+                return;
+            }
+            document.getElementById("timestableborder").innerHTML ="";//for the border containing the timestable
+
+            var table= "<table>";
+            for (x=1; x<= a; x++)
+            {
+                table+="<tr>"; //table row element
+                    for(y=1 ; y<= b ; y++ )
+                    {
+                        table += "<td>" + (x*y) + "</td>";//table data cell element
+                    }
+                table += "</tr>";
+            }
+            table += "</table>"
+            document.getElementById("timestableborder").innerHTML = table;
+        }
+        function error(no1,no2)//checking if the inputted value is between 2 and 10
+        {
+          no1= document.getElementById("number1").value;
+          no2= document.getElementById("number2").value;
+
+          if (no1 > 10 || no2 > 10 || no1 < 2 || no2 < 2)
+          {
+            alert("Please enter numbers between 2 and 10");
+            return false;
+          }
+          return true;
+        }
+    
+    </script>
+</body>
+</html>
